@@ -11,7 +11,7 @@ const Tours = ({ url, isLoading, setIsLoading }) => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   };
-console.log(removeTour)
+  console.log(removeTour);
 
   const fetchData = () => {
     fetch(url)
@@ -41,6 +41,24 @@ console.log(removeTour)
     return (
       <main>
         <Loading />
+      </main>
+    );
+  }
+
+  if (tours.length === 0) {
+    return (
+      <main>
+        <div className="title">
+          <h2>no tours left</h2>
+          <button
+            type="button"
+            style={{ marginTop: "2rem" }}
+            className="btn"
+            onClick={() => fetchData()}
+          >
+            refresh
+          </button>
+        </div>
       </main>
     );
   }
